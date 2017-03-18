@@ -11,8 +11,9 @@
 var app = angular.module('cinemaApp', [
     'ngAnimate',
     'ngSanitize',
-    'ngTouch',
-    'ui.router'
+    'ngMaterial',
+    'ui.router',
+    'ngMdIcons'
   ]);
 
 app.config(function ($stateProvider, $urlRouterProvider) {
