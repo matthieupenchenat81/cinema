@@ -36,5 +36,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: '/balade',
             templateUrl: 'views/visit.html',
             controller: 'VisitCtrl'
+        })
+        
+        .state('location-detail', {
+            url: '/balade/detailLieu',
+            templateUrl: 'views/locationDetail.html',
+            controller: 'LocationDetailCtrl'
         });
     });

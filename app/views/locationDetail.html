@@ -1,0 +1,20 @@
+<md-toolbar>
+    <div class="md-toolbar-tools">
+        <md-truncate flex="30">Movies & Places -- We Love ! </md-truncate>
+        <md-input-container flex="40" md-no-float class="md-block" style="padding-top: 20px">
+            <input ng-model="user.phone" type="text" placeholder="Trouver un film">
+        </md-input-container>
+
+        <md-button class="md-raised" aria-label="Rechercher" ng-click="showMovieDetail()">
+            Rechercher
+        </md-button>
+    </div>
+</md-toolbar>
+
+<div style="padding: 20px">
+    <h1>Musée du Louvre</h1>
+
+    <img src="images/le-louvre.jpg" class="md-card-image" alt="Washed Out" width="300px">
+</div>
+
+<a class="arrow-up click"><img src="images/icons/arrow-up.png" ng-click="goBackToVisit()"/></a>

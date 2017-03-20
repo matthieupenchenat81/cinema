@@ -32,3 +32,13 @@ body {
   width: 200px;
   margin-left : -100px;
 }
+
+.arrow-up {
+  position: fixed;
+  bottom: 5%;
+  right: 3%;
+}
+
+.click {
+  cursor: pointer;
+}
