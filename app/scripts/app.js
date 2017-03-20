@@ -13,7 +13,8 @@ var app = angular.module('cinemaApp', [
     'ngSanitize',
     'ngMaterial',
     'ui.router',
-    'ngMdIcons'
+    'ngMdIcons',
+    'leaflet-directive'
   ]);
 
 app.config(function ($stateProvider, $urlRouterProvider) {

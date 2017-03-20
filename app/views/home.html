@@ -1,23 +1,39 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
-</div>
+<leaflet lf-center="center" height="100%" width="100%"></leaflet>
 
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
+<div class="home-search">
 
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
+  <!--<md-toolbar class="md-hue-2">
+    <div class="md-toolbar-tools">
+      <div layout="column" ng-cloak class="md-inline-form">
+        <md-input-container class="md-icon-float md-block">
+          <label>Name</label>
+          <ng-md-icon icon="search" style="fill: grey" size="24"></ng-md-icon>
+          <input ng-model="user.name" type="text">
+        </md-input-container>
+        <md-button class="md-raised" aria-label="Learn More">
+          Learn More
+        </md-button>
+      </div>
+    </div>
+  </md-toolbar>-->
 
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <!--<md-button aria-label="Go Back">
+        Go Back
+      </md-button>
+
+      <md-truncate style="position: absolute; left: 90px; right: 170px; top: 13px; bottom: 13px;">Toolbar with Standard Buttons</md-truncate>-->
+
+      <md-input-container md-no-float class="md-block" style="padding-top: 20px">
+        <input ng-model="user.phone" type="text" placeholder="Trouver un film">
+      </md-input-container>
+
+
+      <span flex></span>
+      <md-button class="md-raised" aria-label="Learn More">
+        Rechercher
+      </md-button>
+    </div>
+  </md-toolbar>
 </div>
