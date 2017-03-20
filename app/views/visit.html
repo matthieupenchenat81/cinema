@@ -1,0 +1,33 @@
+<md-toolbar>
+    <div class="md-toolbar-tools">
+        <md-truncate flex="30">Movies & Places -- We Love ! </md-truncate>
+        <md-input-container flex="40" md-no-float class="md-block" style="padding-top: 20px">
+            <input ng-model="user.phone" type="text" placeholder="Trouver un film">
+        </md-input-container>
+
+        <md-button class="md-raised" aria-label="Rechercher" ng-click="showMovieDetail()">
+            Rechercher
+        </md-button>
+    </div>
+</md-toolbar>
+
+<div layout="row" layout-fill>
+  <div flex="70">
+      <leaflet lf-center="center" markers="markers" defaults="defaults" height="100%" width="100%"></leaflet>
+  </div>
+  <div flex="30" style="padding: 10px">
+      
+      <h2 class="md-title">Into the Wild</h2>
+
+      <img src="images/Into-The-Wild-Cover.jpg" class="md-card-image" alt="Washed Out" width="150px">
+
+      <p>
+          Réalisateur : Sean Penn<br/>
+          Date début évènement : 2003<br/>
+          Date fin évènement : 2007<br/>
+          Adresse : Alaska, États-Unis<br/>
+      </p>
+
+  </div>
+</div>
+

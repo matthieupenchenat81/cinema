@@ -16,3 +16,19 @@ body {
   width: 700px;
   margin-left : -350px;
 }
+
+.or {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  width: 100px;
+  margin-left : -50px;
+}
+
+.walk {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  width: 200px;
+  margin-left : -100px;
+}
