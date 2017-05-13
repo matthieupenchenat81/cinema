@@ -8,9 +8,33 @@
  * Controller of the cinemaApp
  */
 angular.module('cinemaApp')
-    .controller('VisitCtrl', function ($scope, $state) {
+    .controller('VisitCtrl', function ($scope, $state, $mdSidenav) {
 
         init();
+
+        $scope.toggleRight = buildToggler('right');
+        $scope.isOpenRight = function () {
+            return $mdSidenav('right').isOpen();
+        };
+
+        function buildToggler(navID) {
+            return function () {
+                // Component lookup should always be available since we are not using `ng-if`
+                $mdSidenav(navID)
+                    .toggle()
+                    .then(function () {
+                        console.log("toggle " + navID + " is done");
+                    });
+            };
+        }
+
+        $scope.close = function () {
+            // Component lookup should always be available since we are not using `ng-if`
+            $mdSidenav('right').close()
+                .then(function () {
+                    $log.debug("close RIGHT is done");
+                });
+        };
 
         // Public functions -------------
 
@@ -26,11 +50,11 @@ angular.module('cinemaApp')
                 iconAnchor: [40, 40],
                 //shadowAnchor: [4, 62]
             },
-            flowerIcon = {
-                iconUrl: 'images/icons/flower.png',
-                iconSize: [40, 40],
-                iconAnchor: [40, 40]
-            }
+                flowerIcon = {
+                    iconUrl: 'images/icons/flower.png',
+                    iconSize: [40, 40],
+                    iconAnchor: [40, 40]
+                }
 
             $scope.center = {
                 lat: 48.853,

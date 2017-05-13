@@ -8,7 +8,7 @@
  * Controller of the cinemaApp
  */
 angular.module('cinemaApp')
-  .controller('HomeCtrl', function ($scope, $state) {
+  .controller('HomeCtrl', function ($scope, $state, DataService) {
 
     angular.extend($scope, {
       showMovieDetail
@@ -36,6 +36,12 @@ angular.module('cinemaApp')
         scrollWheelZoom: false,
         zoomControl: false
       };
+
+      DataService.getScenes().then(function(data) {
+        console.log(data);
+      }).catch(function(err) {
+        console.log(err);
+      })
     }
 
   });

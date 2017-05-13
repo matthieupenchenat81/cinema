@@ -12,22 +12,46 @@
 </md-toolbar>
 
 <div layout="row" layout-fill>
-  <div flex="70">
-      <leaflet lf-center="center" markers="markers" defaults="defaults" height="100%" width="100%"></leaflet>
-  </div>
-  <div flex="30" style="padding: 10px">
-      
-      <h2 class="md-title">Into the Wild</h2>
+    <div flex="70">
+        <leaflet lf-center="center" markers="markers" defaults="defaults" height="100%" width="100%"></leaflet>
+    </div>
+    <div>
+        <md-button ng-click="toggleRight()" ng-hide="isOpenRight()" class="md-primary">
+            Toggle right
+        </md-button>
+    </div>
 
-      <img src="images/Into-The-Wild-Cover.jpg" class="md-card-image" alt="Washed Out" width="150px">
 
-      <p>
-          Réalisateur : Sean Penn<br/>
-          Date début évènement : 2003<br/>
-          Date fin évènement : 2007<br/>
-          Adresse : Alaska, États-Unis<br/>
-      </p>
+    <md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="right">
 
-  </div>
+        <md-toolbar class="md-theme-light">
+            <h1 class="md-toolbar-tools">Sidenav Right</h1>
+        </md-toolbar>
+        <!--<md-content ng-controller="RightCtrl" layout-padding>-->
+        <md-content layout-padding>
+            <form>
+                <md-input-container>
+                    <label for="testInput">Test input</label>
+                    <input type="text" id="testInput" ng-model="data" md-autofocus>
+                </md-input-container>
+            </form>
+            <md-button ng-click="close()" class="md-primary">
+                Close Sidenav Right
+            </md-button>
+        </md-content>
+
+    </md-sidenav>
+
+    <!--<div flex="30" style="padding: 10px">
+
+        <h2 class="md-title">Into the Wild</h2>
+
+        <img src="images/Into-The-Wild-Cover.jpg" class="md-card-image" alt="Washed Out" width="150px">
+
+        <p>
+            Réalisateur : Sean Penn<br/> Date début évènement : 2003<br/> Date fin évènement : 2007<br/> Adresse : Alaska,
+            États-Unis<br/>
+        </p>
+
+    </div>-->
 </div>
-
