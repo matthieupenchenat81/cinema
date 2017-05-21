@@ -24,6 +24,10 @@
                     var request = $http.get(apiServer + '/movies');
                     return request.then(handleSuccess);
                 }
+                function getMonuments() {
+                    var request = $http.get(apiServer + '/monuments');
+                    return request.then(handleSuccess);
+                }
 
                 // private functions
                 function handleSuccess(response) {
