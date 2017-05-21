@@ -23,12 +23,9 @@ angular.module('cinemaApp')
 
             // marker icon
             filmIcon = {
-                iconUrl: 'images/icons/filmreel.png',
-                //shadowUrl: 'examples/img/leaf-shadow.png',
+                iconUrl: 'images/icons/clapboard.png',
                 iconSize: [40, 40],
-                //shadowSize: [50, 64],
                 iconAnchor: [40, 40],
-                //shadowAnchor: [4, 62]
             };
 
             flowerIcon = {
