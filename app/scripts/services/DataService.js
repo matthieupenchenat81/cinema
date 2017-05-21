@@ -11,7 +11,8 @@
                 // PUBLIC API.
                 // ---------------------------------------------------------------------------
                 return ({
-                    getScenes: getScenes
+                    getScenes: getScenes,
+                    getMovies: getMovies
                 });
 
                 function getScenes() {
@@ -19,9 +20,14 @@
                     return request.then(handleSuccess);
                 }
 
+                function getMovies() {
+                    var request = $http.get(apiServer + '/movies');
+                    return request.then(handleSuccess);
+                }
+
                 // private functions
                 function handleSuccess(response) {
-                    return (response && response.data && response.data.results && response.data.results.bindings)?response.data.results.bindings:[];  
+                    return (response && response.data && response.data.results && response.data.results.bindings) ? response.data.results.bindings : [];
                 }
             }]);
 })();

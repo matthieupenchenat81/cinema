@@ -3,22 +3,25 @@
 <div class="home-search">
   <md-toolbar>
     <div class="md-toolbar-tools">
-      <md-input-container md-no-float class="md-block" style="padding-top: 20px">
+      <!--      <md-input-container md-no-float class="md-block" style="padding-top: 20px">
         <input ng-model="user.phone" type="text" placeholder="Trouver un film">
-      </md-input-container>
+      </md-input-container>-->
+
+      <md-autocomplete md-selected-item="autocomplete.selectedItem" md-search-text="autocomplete.searchText" md-items="item in querySearch(autocomplete.searchText)"
+        md-item-text="item.display" md-min-length="0" placeholder="Cherchez un film">
+        <md-item-template>
+          <span md-highlight-text="autocomplete.searchText" md-highlight-flags="^i">{{item.display}}</span>
+        </md-item-template>
+        <md-not-found>
+          No states matching "{{autocomplete.searchText}}" were found.
+          <a>Create a new one!</a>
+        </md-not-found>
+      </md-autocomplete>
 
       <span flex></span>
-      <md-button class="md-raised" aria-label="Rechercher" ng-click="showMovieDetail()">
+      <md-button class="md-raised" aria-label="Rechercher" ng-click="showMovieDetail(autocomplete.selectedItem)">
         Rechercher
       </md-button>
     </div>
   </md-toolbar>
-</div>
-
-<div class="or">
-  <h1>Soit ...</h1>
-</div>
-
-<div class="walk">
-  <md-button class="md-raised">Je me balade !</md-button>
 </div>
