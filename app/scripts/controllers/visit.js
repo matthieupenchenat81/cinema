@@ -49,7 +49,7 @@ angular.module('cinemaApp')
                 scenes = formatScenes(_scenes);
                 if (movieId) {
                     scenes = scenes.filter(filterByMovieTitle);
-                    
+
                     // update leaflet center map point
                     $rootScope.center = getCenter(scenes);
                     loadMarkers(scenes);
@@ -105,11 +105,21 @@ angular.module('cinemaApp')
         }
 
         function getCenter(scenes) {
-            var numberOfScenes = scenes.length,
-                meanLat = scenes.reduce(function (previous, current) {
-                    var previousLat = parseFloat((typeof previous === 'object') ? previous.geoPoints.lat : previous);
-                    return previousLat + parseFloat(current.geoPoints.lat);
-                }) / numberOfScenes,
+            console.log(scenes.length);
+            var numberOfScenes = scenes.length;
+
+            if (numberOfScenes === 1) {
+                return {
+                    lat: parseFloat(scenes[0].geoPoints.lat),
+                    lng: parseFloat(scenes[0].geoPoints.lng),
+                    zoom: 13
+                };
+            }
+
+            var meanLat = scenes.reduce(function (previous, current) {
+                var previousLat = parseFloat((typeof previous === 'object') ? previous.geoPoints.lat : previous);
+                return previousLat + parseFloat(current.geoPoints.lat);
+            }) / numberOfScenes,
                 meanLng = scenes.reduce(function (previous, current) {
                     var previousLng = parseFloat((typeof previous === 'object') ? previous.geoPoints.lng : previous);
                     return previousLng + parseFloat(current.geoPoints.lng);
@@ -127,7 +137,7 @@ angular.module('cinemaApp')
                 title: scenes[0].labelFilm,
                 director: scenes[0].nomRealisateur,
                 city: scenes[0].nomVille,
-                numberOfScenes : scenes.length
+                numberOfScenes: scenes.length
             };
         }
     });
