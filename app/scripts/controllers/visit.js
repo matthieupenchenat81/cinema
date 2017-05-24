@@ -159,7 +159,6 @@ angular.module('cinemaApp')
         }
 
         function getCenter(scenes) {
-            console.log(scenes.length);
             var numberOfScenes = scenes.length;
 
             if (numberOfScenes === 1) {
