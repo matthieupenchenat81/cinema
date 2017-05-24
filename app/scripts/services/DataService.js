@@ -12,7 +12,8 @@
                 // ---------------------------------------------------------------------------
                 return ({
                     getScenes: getScenes,
-                    getMovies: getMovies
+                    getMovies: getMovies,
+                    getMonuments: getMonuments
                 });
 
                 function getScenes() {

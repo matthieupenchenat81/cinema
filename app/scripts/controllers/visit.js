@@ -57,8 +57,9 @@ angular.module('cinemaApp')
 
             //retrieve all monuments
             var monuments = [];
-            loadMonuments().then(function name(_monuments) {
+            loadMonuments().then(function (_monuments) {
                 monuments = formatMonuments(_monuments);
+                console.log(monuments[0]);
                 // if () {
                 //   monuments = monuments.filter(filterByMovieTitle);
 
@@ -121,12 +122,15 @@ angular.module('cinemaApp')
                 $rootScope.markers = {};
             }
             monuments.forEach(function (monument, index) {
-                if (monument.coordonneesGps && monument.coordonneesGps.length==2) {
-
+                if (monument.coordonneesGps) {
+                    var coordGps = monument.coordonneesGps.split(","),
+                    message = (monument.appellationC !== 'undefined')? "Nom : " + monument.appellationC:'';
+                    message += (monument.archi !== 'undefined')? "<br>Architecte : " + monument.archi:'';
+                    message += (monument.periodeConstruction !== 'undefined')? "<br>Période de construction : " + monument.periodeConstruction:"";
                     var marker = {
-                        lat: parseFloat(monument.coordonneesGps[0]),
-                        lng: parseFloat(monument.coordonneesGps[1]),
-                        message: "Nom : " + monument.appellationC,
+                        lat: parseFloat(coordGps[0]),
+                        lng: parseFloat(coordGps[1]),
+                        message: message,
                         focus: false,
                         draggable: false,
                         icon: monumentIcon
