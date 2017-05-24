@@ -11,7 +11,7 @@ angular.module('cinemaApp')
     .controller('VisitCtrl', function ($scope, $state, $mdSidenav, SessionService, DataService, $stateParams, $timeout, $rootScope) {
 
         var movieTitle,
-            filmIcon, flowerIcon;
+            filmIcon, monumentIcon;
 
         init();
 
@@ -28,7 +28,7 @@ angular.module('cinemaApp')
                 iconAnchor: [40, 40],
             };
 
-            flowerIcon = {
+            monumentIcon = {
                 iconUrl: 'images/icons/flower.png',
                 iconSize: [40, 40],
                 iconAnchor: [40, 40]
@@ -54,6 +54,22 @@ angular.module('cinemaApp')
                     $scope.movieInfo = getMovieInfo(scenes);
                 }
             });
+
+            //retrieve all monuments
+            var monuments = [];
+            loadMonuments().then(function name(_monuments) {
+                monuments = formatMonuments(_monuments);
+                // if () {
+                //   monuments = monuments.filter(filterByMovieTitle);
+
+                // update leaflet center map point
+                // $rootScope.center = getCenter(monuments);
+                loadMarkersM(monuments);
+
+                $scope.monumentInfo = getMonumentInfo(monuments);
+                // }
+            });
+
         }
 
         function formatScenes(scenes) {
@@ -65,6 +81,17 @@ angular.module('cinemaApp')
                     labelFilm: scene.labelFilm.value,
                     nomRealisateur: scene.nomRealisateur.value,
                     nomVille: scene.nomVille.value
+                };
+            });
+        }
+
+        function formatMonuments(monuments) {
+            return monuments.map(function (monument) {
+                return {
+                    appellationC: monument.appellationC.value,
+                    archi: monument.archi.value,
+                    periodeConstruction: monument.periodeConstruction.value,
+                    coordonneesGps: monument.coordonneesGps.value
                 };
             });
         }
@@ -88,12 +115,42 @@ angular.module('cinemaApp')
             });
         }
 
+        function loadMarkersM(monuments) {
+
+            if (!$rootScope.markers) {
+                $rootScope.markers = {};
+            }
+            monuments.forEach(function (monument, index) {
+                if (monument.coordonneesGps && monument.coordonneesGps.length==2) {
+
+                    var marker = {
+                        lat: parseFloat(monument.coordonneesGps[0]),
+                        lng: parseFloat(monument.coordonneesGps[1]),
+                        message: "Nom : " + monument.appellationC,
+                        focus: false,
+                        draggable: false,
+                        icon: monumentIcon
+                    };
+                    $rootScope.markers[""+index+"monument"] = marker;
+                }
+            });
+        }
+
         function loadScenes() {
             var scenes = SessionService.getScenes();
             if (scenes) return Promise.resolve(scenes);
             else return DataService.getScenes().then(function (_scenes) {
                 SessionService.storeScenes(_scenes);
                 return Promise.resolve(_scenes);
+            });
+        }
+
+        function loadMonuments() {
+            var monuments = SessionService.getMonuments();
+            if (monuments) return Promise.resolve(monuments);
+            else return DataService.getMonuments().then(function (_monuments) {
+                SessionService.storeMonuments(_monuments);
+                return Promise.resolve(_monuments);
             });
         }
 
@@ -135,6 +192,13 @@ angular.module('cinemaApp')
                 director: scenes[0].nomRealisateur,
                 city: scenes[0].nomVille,
                 numberOfScenes: scenes.length
+            };
+        }
+
+        function getMonumentInfo(monuments) {
+            return {
+                construction: monuments[0].periodeConstruction,
+                architecte: monuments[0].archi
             };
         }
     });

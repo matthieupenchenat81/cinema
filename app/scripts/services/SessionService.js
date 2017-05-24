@@ -15,7 +15,11 @@
 
                     getMovies: getMovies,
                     storeMovies: storeMovies,
-                    removeMovies: removeMovies
+                    removeMovies: removeMovies,
+
+                    getMonuments: getMonuments,
+                    storeMonuments: storeMonuments,
+                    removeMonuments: removeMonuments
                 });
 
                 // ---------------------------------------------------------------------------
@@ -46,6 +50,19 @@
 
                 function removeMovies() {
                     delete $window.sessionStorage.movies;
+                }
+
+                function storeMonuments(monuments) {
+                    $window.sessionStorage.monuments = JSON.stringify(monuments);
+                }
+
+                function getMonuments() {
+                    var monuments = $window.sessionStorage.monuments;
+                    return (!monuments) ? null : JSON.parse($window.sessionStorage.monuments);
+                }
+
+                function removeMonuments() {
+                    delete $window.sessionStorage.monuments;
                 }
                 
                 // ---------------------------------------------------------------------------
